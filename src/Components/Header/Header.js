@@ -42,14 +42,14 @@ const Header = () => {
                 <Nav.Link as={Link} to="home">
                   <span className="link">HOME</span>
                 </Nav.Link>
-                <Nav.Link as={Link} to="aboutme">
-                  <span className="link">ABOUT ME</span>
-                </Nav.Link>
                 <Nav.Link as={Link} to="blogs">
                   <span className="link">BLOGS</span>
                 </Nav.Link>
                 <Nav.Link href="home#services">
                   <span className="link">Services</span>
+                </Nav.Link>
+                <Nav.Link as={Link} to="aboutme">
+                  <span className="link">ABOUT ME</span>
                 </Nav.Link>
                 <Nav.Link as={Link} to="signup">
                   <span className="link">SignUp</span>

@@ -11,6 +11,7 @@ import SignUp from "./Components/Pages/Shared/Signup/Signup";
 import Login from "./Components/Pages/Shared/Login/Login";
 import Required from "./Components/Pages/Shared/Required/Required";
 import Services from "./Components/Pages/Home/Services/Services";
+import NotFound from "./Components/Pages/Shared/NotFound/NotFound";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
