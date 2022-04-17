@@ -9,8 +9,8 @@ import Blogs from "./Components/Pages/Blogs/Blogs";
 import Articles from "./Components/Pages/Home/Articles/Articles";
 import SignUp from "./Components/Pages/Shared/Signup/Signup";
 import Login from "./Components/Pages/Shared/Login/Login";
-// import Required from "./Components/Pages/Shared/Requied/Requied";
 import Required from "./Components/Pages/Shared/Required/Required";
+import Services from "./Components/Pages/Home/Services/Services";
 
 function App() {
   return (
@@ -27,7 +27,15 @@ function App() {
             </Required>
           }
         ></Route>
-        <Route path="/aboutme" element={<AboutMe></AboutMe>}></Route>
+        <Route
+          path="/aboutme"
+          element={
+            <Required>
+              <AboutMe></AboutMe>
+            </Required>
+          }
+        ></Route>
+        <Route path="#service" element={<Services></Services>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>

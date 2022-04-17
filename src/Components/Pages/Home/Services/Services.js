@@ -36,9 +36,9 @@ const Services = () => {
       <hr className="mb-10"></hr>
       <div className="row">
         {service.map((service) => (
-          <div className="col-sm-12 col-md-6 col-lg-4 ">
+          <div key={service.id} className="col-sm-12 col-md-6 col-lg-4 ">
             <CardGroup>
-              <Service key={service.id} service={service}></Service>
+              <Service service={service}></Service>
             </CardGroup>
           </div>
         ))}

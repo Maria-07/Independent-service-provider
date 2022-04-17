@@ -1,5 +1,4 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
 import aboutImage from "../../../../images/about/about-1.png";
 
 const About = () => {

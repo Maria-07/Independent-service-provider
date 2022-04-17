@@ -14,7 +14,7 @@ const Header = () => {
   };
   return (
     <div>
-      <Navbar fixed="top" className=" bg-white text-slate-100" expand={false}>
+      <Navbar className="fixed top-0  bg-white text-slate-100" expand={false}>
         <Container>
           <Navbar.Brand as={Link} to="home">
             <span className=" font-semibold text-2xl">Emma Watson</span>
