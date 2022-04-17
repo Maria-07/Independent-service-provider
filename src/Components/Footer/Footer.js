@@ -3,7 +3,9 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <h1>This is Footer part</h1>
+      <p className="text-center text-gray-500 text-xs">
+        &copy;2022 Emma Watson. All rights reserved.
+      </p>
     </div>
   );
 };

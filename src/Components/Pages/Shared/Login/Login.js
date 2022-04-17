@@ -30,7 +30,7 @@ const Login = () => {
     <div className="mx-auto">
       <form
         onSubmit={handleUserSignIn}
-        className=" border-2 p-11 mt-36 w-1/4 mb-4 mx-auto text-center"
+        className="border-2 p-11 mt-36 w-full md:w-4/5 lg:w-1/4 mb-4 mx-auto text-center"
       >
         <h1 className=" mb-8 text-3xl">Login</h1>
         <div className=" text-left">
@@ -76,9 +76,6 @@ const Login = () => {
           Continue with Google
         </button>
       </form>
-      <p className="text-center text-gray-500 text-xs">
-        &copy;2022 Emazon shopping. All rights reserved.
-      </p>
     </div>
   );
 };

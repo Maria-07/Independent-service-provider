@@ -1,15 +1,23 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 import "./Header.css";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+
+  const handleSignOut = () => {
+    signOut(auth);
+  };
   return (
     <div>
-      <Navbar className=" text-slate-100" expand={false}>
+      <Navbar fixed="top" className=" bg-white text-slate-100" expand={false}>
         <Container>
           <Navbar.Brand as={Link} to="home">
-            <span className=" text-2xl">Emma Watson</span>
+            <span className=" font-semibold text-2xl">Emma Watson</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
@@ -38,9 +46,16 @@ const Header = () => {
                 <Nav.Link as={Link} to="signup">
                   <span className="link">SignUp</span>
                 </Nav.Link>
-                <Nav.Link as={Link} to="login">
-                  <span className="link">Login</span>
-                </Nav.Link>
+
+                {user ? (
+                  <Nav.Link onClick={handleSignOut} as={Link} to="login">
+                    <span className="link">Sign Out</span>
+                  </Nav.Link>
+                ) : (
+                  <Nav.Link as={Link} to="login">
+                    <span className="link">Login</span>
+                  </Nav.Link>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -13,15 +13,10 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user] =
     useCreateUserWithEmailAndPassword(auth);
 
-  const handleEmailBlur = (e) => {
-    const value = e.target.value;
-    setEmail(value);
-    console.log(value);
-  };
-  const handlePasswordBlur = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-  };
+  const handleEmailBlur = (e) => setEmail(e.target.value);
+
+  const handlePasswordBlur = (e) => setPassword(e.target.value);
+
   const handleConfirmBlur = (e) => {
     const value = e.target.value;
     if (value === "") {
@@ -31,7 +26,7 @@ const SignUp = () => {
   };
 
   if (user) {
-    navigate("/shop");
+    navigate("/home");
   }
 
   const handleCreateUser = (event) => {
@@ -48,10 +43,10 @@ const SignUp = () => {
 
   return (
     <div>
-      <div className="mx-auto">
+      <div className=" my-32 mx-auto">
         <form
           onSubmit={handleCreateUser}
-          className=" border-2 p-11 mt-14 w-1/4 mb-4 mx-auto text-center"
+          className=" border-2 p-11 mt-14 w-full md:w-4/5 lg:w-1/4 mb-4 mx-auto text-center"
         >
           <h1 className=" mb-8 text-3xl">Sign UP</h1>
           <div className=" text-left">
@@ -103,16 +98,13 @@ const SignUp = () => {
             </Link>
           </p>
 
-          <div className="my-5 text-2xl font-semibold">Or</div>
+          <div className="my-3 text-2xl font-semibold">Or</div>
 
           <button className=" flex items-center justify-center w-full border-2 rounded mt-2 px-5 py-2 text-lg">
             <img src="google.png" className="w-10 h-10" alt="" />
             Continue with Google
           </button>
         </form>
-        <p className="text-center text-gray-500 text-xs">
-          &copy;2022 Emazon shopping. All rights reserved.
-        </p>
       </div>
     </div>
   );
