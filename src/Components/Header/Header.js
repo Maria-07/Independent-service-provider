@@ -8,7 +8,7 @@ const Header = () => {
     <div>
       <Navbar className=" text-slate-100" expand={false}>
         <Container>
-          <Navbar.Brand href="#">
+          <Navbar.Brand as={Link} to="home">
             <span className=" text-2xl">Emma Watson</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />

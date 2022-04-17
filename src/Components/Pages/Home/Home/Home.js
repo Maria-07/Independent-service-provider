@@ -2,12 +2,14 @@ import React from "react";
 import "./Home.css";
 import Banner from "../Banner/Banner";
 import About from "../About/About";
+import Services from "../Services/Services";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
       <About></About>
+      <Services></Services>
     </div>
   );
 };
