@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardGroup } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
@@ -14,13 +14,6 @@ const Service = ({ service }) => {
           <Card.Text className="mb-2">
             {des} ... <span className="font-semibold">Read More</span>
           </Card.Text>
-          {/* {description.length < 40 ? (
-            <Card.Text>{description}</Card.Text>
-          ) : (
-            <Card.Text>
-              description.slice(0, 30) + <span>... read more</span>{" "}
-            </Card.Text>
-          )} */}
         </Card.Body>
         <Card.Footer>
           <Link to={`${id}/${name}/${description}`}>

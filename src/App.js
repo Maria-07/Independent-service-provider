@@ -9,7 +9,8 @@ import Blogs from "./Components/Pages/Blogs/Blogs";
 import Articles from "./Components/Pages/Home/Articles/Articles";
 import SignUp from "./Components/Pages/Shared/Signup/Signup";
 import Login from "./Components/Pages/Shared/Login/Login";
-import Requied from "./Components/Pages/Shared/Requied/Requied";
+// import Required from "./Components/Pages/Shared/Requied/Requied";
+import Required from "./Components/Pages/Shared/Required/Required";
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
         <Route
           path="/home/:serviceId/:name/:description"
           element={
-            <Requied>
+            <Required>
               <Articles></Articles>
-            </Requied>
+            </Required>
           }
         ></Route>
         <Route path="/aboutme" element={<AboutMe></AboutMe>}></Route>

@@ -26,7 +26,12 @@ const Header = () => {
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id="offcanvasNavbarLabel">
+              <Offcanvas.Title
+                as={Link}
+                className="text-decoration-none"
+                to="home"
+                id="offcanvasNavbarLabel"
+              >
                 <span className=" text-4xl font-semibold text-gray-800">
                   Emma Watson
                 </span>
