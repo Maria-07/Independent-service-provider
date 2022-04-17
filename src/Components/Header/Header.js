@@ -35,6 +35,12 @@ const Header = () => {
                 <Nav.Link as={Link} to="blogs">
                   <span className="link">BLOGS</span>
                 </Nav.Link>
+                <Nav.Link as={Link} to="signup">
+                  <span className="link">SignUp</span>
+                </Nav.Link>
+                <Nav.Link as={Link} to="login">
+                  <span className="link">Login</span>
+                </Nav.Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
