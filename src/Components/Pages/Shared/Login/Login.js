@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, user] =
     useSignInWithEmailAndPassword(auth);
 
   const handleEmailBlur = (e) => setEmail(e.target.value);

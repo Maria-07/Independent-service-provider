@@ -14,7 +14,15 @@
 7. Tailwind  
    npm install -D tailwindcss postcss autoprefixer
    npx tailwindcss init -p
-8.
+8.responsive navbar added
+9. banner part design complete adding carousel
+10. Title name & banner details added
+11. About part added
+12. service parts added
+   * image, title , description & button added
+   * route in a Component name 'Article'
+13.footer added
+14.
 
 
 */
