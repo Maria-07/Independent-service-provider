@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [user] = useAuthState(auth);
+
+  const [signInWithGoogle, user1, loading, error] = useSignInWithGoogle(auth);
+
+  // const signinWithGoogle = () => {};
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,7 +25,22 @@ const Login = () => {
   const handleEmailBlur = (e) => setEmail(e.target.value);
   const handlePasswordBlur = (e) => setPassword(e.target.value);
 
+  if (error) {
+    return (
+      <div>
+        <p className="text-red-500">Error: {error.message}</p>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   if (user) {
+    navigate(from, { replace: true });
+  }
+  if (user1) {
     navigate(from, { replace: true });
   }
 
@@ -71,7 +94,10 @@ const Login = () => {
 
         <div className="my-5 text-2xl font-semibold">Or</div>
 
-        <button className=" flex items-center justify-center w-full border-2 rounded mt-2 px-5 py-2 text-lg">
+        <button
+          onClick={() => signInWithGoogle()}
+          className=" flex items-center justify-center w-full border-2 rounded mt-2 px-5 py-2 text-lg"
+        >
           <img src="google.png" className="w-10 h-10" alt="" />
           Continue with Google
         </button>
