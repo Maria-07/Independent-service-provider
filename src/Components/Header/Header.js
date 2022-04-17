@@ -14,7 +14,7 @@ const Header = () => {
   };
   return (
     <div>
-      <Navbar className="fixed top-0  bg-white text-slate-100" expand={false}>
+      <Navbar fixed="top" className="bg-white text-slate-100" expand={false}>
         <Container>
           <Navbar.Brand as={Link} to="home">
             <span className=" font-semibold text-2xl">Emma Watson</span>
@@ -47,6 +47,9 @@ const Header = () => {
                 </Nav.Link>
                 <Nav.Link as={Link} to="blogs">
                   <span className="link">BLOGS</span>
+                </Nav.Link>
+                <Nav.Link href="home#services">
+                  <span className="link">Services</span>
                 </Nav.Link>
                 <Nav.Link as={Link} to="signup">
                   <span className="link">SignUp</span>

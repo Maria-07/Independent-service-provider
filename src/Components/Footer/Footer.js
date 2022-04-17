@@ -1,12 +1,14 @@
 import React from "react";
 
 const Footer = () => {
+  const today = new Date();
+  const year = today.getFullYear();
   return (
-    <div>
-      <p className="text-center text-gray-500 text-xs">
-        &copy;2022 Emma Watson. All rights reserved.
+    <footer className="text-center  my-10">
+      <p>
+        <small>&copy;{year} Emma Watson. All rights reserved. </small>
       </p>
-    </div>
+    </footer>
   );
 };
 
