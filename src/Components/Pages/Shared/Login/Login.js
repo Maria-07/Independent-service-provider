@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import { sendPasswordResetEmail } from "firebase/auth";
+import React, { useRef, useState } from "react";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdatePassword,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../../../firebase.init";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,8 +19,12 @@ const Login = () => {
 
   const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
 
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+
   const location = useLocation();
   const navigate = useNavigate();
+  const emailRef = useRef("");
+
   const from = location.state?.from?.pathname || "/";
 
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -26,7 +35,10 @@ const Login = () => {
 
   if (error1) {
     // console.log(error);
-
+    errorElement = <p className="text-red-500">Error: {error1.message}</p>;
+  }
+  if (error) {
+    // console.log(error);
     errorElement = <p className="text-red-500">Error: {error.message}</p>;
   }
 
@@ -37,6 +49,17 @@ const Login = () => {
   if (user || user1) {
     navigate(from, { replace: true });
   }
+
+  const resetPassword = async () => {
+    // const email = emailRef.current.value;
+    console.log(email);
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Sent email");
+    } else {
+      toast("please enter your email address");
+    }
+  };
 
   const handleUserSignIn = (event) => {
     event.preventDefault();
@@ -88,9 +111,12 @@ const Login = () => {
         </p>
         <p>
           Forget Password?{" "}
-          <Link className="text-decoration-none text-orange-400" to={"/signup"}>
-            Reset Password
-          </Link>
+          <button
+            onClick={resetPassword}
+            className="text-decoration-none text-orange-400"
+          >
+            Reset Password.
+          </button>
         </p>
 
         <div className="my-5 text-2xl font-semibold">Or</div>
@@ -103,6 +129,7 @@ const Login = () => {
           Continue with Google
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };
