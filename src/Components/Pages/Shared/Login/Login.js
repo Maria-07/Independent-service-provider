@@ -1,10 +1,8 @@
-import { sendPasswordResetEmail } from "firebase/auth";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
-  useUpdatePassword,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -14,42 +12,26 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [user] = useAuthState(auth);
   let errorElement;
-
-  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
-
-  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
-
-  const location = useLocation();
-  const navigate = useNavigate();
-  const emailRef = useRef("");
-
-  const from = location.state?.from?.pathname || "/";
-
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
 
   const handleEmailBlur = (e) => setEmail(e.target.value);
   const handlePasswordBlur = (e) => setPassword(e.target.value);
 
+  // sign in with google
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
   if (error1) {
-    // console.log(error);
     errorElement = <p className="text-red-500">Error: {error1.message}</p>;
   }
+
+  // sign in with email
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   if (error) {
-    // console.log(error);
     errorElement = <p className="text-red-500">Error: {error.message}</p>;
   }
 
-  if (loading || loading1) {
-    return <p>Loading...</p>;
-  }
-
-  if (user || user1) {
-    navigate(from, { replace: true });
-  }
-
+  // Password reset
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
   const resetPassword = async () => {
     // const email = emailRef.current.value;
     console.log(email);
@@ -61,6 +43,23 @@ const Login = () => {
     }
   };
 
+  // route navigate
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  if (user || user1) {
+    navigate(from, { replace: true });
+  }
+
+  if (loading || loading1) {
+    return <p>Loading...</p>;
+  }
+
+  if (user || user1) {
+    navigate(from, { replace: true });
+  }
+
+  // EventHandelar
   const handleUserSignIn = (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(email, password);
@@ -96,7 +95,7 @@ const Login = () => {
         </div>
         <br />
         {errorElement}
-        <p>{error?.message}</p>
+        {/* <p>{error?.message}</p> */}
         {loading && <p>Loading .. .. </p>}
         <input
           type="submit"

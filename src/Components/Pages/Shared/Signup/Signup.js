@@ -11,26 +11,10 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
   let errorElement;
 
-  const [signInWithGoogle, user1, loading] = useSignInWithGoogle(auth);
-
-  const [createUserWithEmailAndPassword, user, errorAuth] =
-    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-
-  if (errorAuth) {
-    // console.log(error);
-
-    errorElement = <p className="text-red-500">Error: {errorAuth.message}</p>;
-  }
-
   const handleEmailBlur = (e) => setEmail(e.target.value);
-
   const handlePasswordBlur = (e) => setPassword(e.target.value);
-
   const handleConfirmBlur = (e) => {
     const value = e.target.value;
     if (value === "") {
@@ -39,12 +23,23 @@ const SignUp = () => {
     setConfirmPassword(value);
   };
 
-  if (user) {
+  // signUp with Google
+  const [signInWithGoogle, user1] = useSignInWithGoogle(auth);
+
+  // signUp with Email And Password
+  const [createUserWithEmailAndPassword, user, errorAuth] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  if (errorAuth) {
+    errorElement = <p className="text-red-500">Error: {errorAuth.message}</p>;
+  }
+
+  // navigate router
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  if (user || user1) {
     navigate(from, { replace: true });
   }
-  // if (user1) {
-  //   navigate(from, { replace: true });
-  // }
 
   const handleCreateUser = (event) => {
     event.preventDefault();
@@ -56,6 +51,7 @@ const SignUp = () => {
       setError("password must be 6 characters");
     }
     createUserWithEmailAndPassword(email, password);
+    setError("");
   };
 
   return (
