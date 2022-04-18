@@ -33,25 +33,25 @@ const AboutMe = () => {
 
         <h1 className=" text-4xl font-medium text-center my-20">PORTFOLIO</h1>
         <div className="row mb-14">
-          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3">
+          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3 px-2 ">
             <a target="_blank" href="https://bloom-beauty.netlify.app/">
               <h4 className=" py-4 text-gray-400"># Bloom Beauty</h4>
               <img src={image1} alt="" />
             </a>
           </div>
-          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3">
+          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3 px-2">
             <a target="_blank" href="https://eden-spring-event.netlify.app/">
               <h4 className=" py-4 text-gray-400"># Eden Spring Event</h4>
               <img src={image2} alt="" />
             </a>
           </div>
-          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3">
+          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3 px-2">
             <a target="_blank" href="https://tenchoworld.netlify.app/">
               <h4 className=" py-4 text-gray-400"># Techno world</h4>
               <img src={image3} alt="" />
             </a>
           </div>
-          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3">
+          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3 px-2">
             <a
               target="_blank"
               href="https://panda-commerce-maria07.netlify.app/"
@@ -60,13 +60,13 @@ const AboutMe = () => {
               <img src={image4} alt="" />
             </a>
           </div>
-          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3">
+          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3 px-2">
             <a target="_blank" href="https://touchit-tech.netlify.app/">
               <h4 className=" py-4 text-gray-400"># Touchit Tech</h4>
               <img src={image5} alt="" />
             </a>
           </div>
-          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3">
+          <div className="site-name col-sm-12 col-md-6 col-lg-4 my-3 px-2">
             <a
               target="_blank"
               href="https://emazon-simple-project.web.app/shop"

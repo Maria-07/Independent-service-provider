@@ -18,12 +18,28 @@ const Footer = () => {
         <small>&copy;{year} Emma Watson. All rights reserved. </small>
       </p>
       <div>
-        <FontAwesomeIcon icon={faFacebookF} className="mx-3 text-3xl" />
-        <FontAwesomeIcon icon={faInstagram} className="mx-3 text-3xl" />
-        <FontAwesomeIcon icon={faTwitter} className="mx-3 text-3xl" />
+        <a href="https://www.facebook.com/emmawatson" target="_blank">
+          <FontAwesomeIcon
+            icon={faFacebookF}
+            className=" text-black mx-3 text-3xl"
+          />
+        </a>
+        <a href="https://www.instagram.com/emmawatson/?hl=en" target="_blank">
+          <FontAwesomeIcon
+            icon={faInstagram}
+            className=" text-black mx-3 text-3xl"
+          />
+        </a>
+        <a
+          href="https://twitter.com/EmmaWatson?s=20&t=C-G_BockbnIyibpLLuDsZQ"
+          target="_blank"
+        >
+          <FontAwesomeIcon
+            icon={faTwitter}
+            className=" text-black mx-3 text-3xl"
+          />
+        </a>
       </div>
-
-      {/* <FontAwesomeIcon icon={["fab", "facebook-f"]} /> */}
     </footer>
   );
 };

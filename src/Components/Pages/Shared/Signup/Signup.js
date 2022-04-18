@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../../../../firebase.init";
 
 const SignUp = () => {
@@ -9,9 +12,20 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  let errorElement;
 
-  const [createUserWithEmailAndPassword, user] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, user1, loading] = useSignInWithGoogle(auth);
+
+  const [createUserWithEmailAndPassword, user, errorAuth] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+  if (errorAuth) {
+    // console.log(error);
+
+    errorElement = <p className="text-red-500">Error: {errorAuth.message}</p>;
+  }
 
   const handleEmailBlur = (e) => setEmail(e.target.value);
 
@@ -26,8 +40,11 @@ const SignUp = () => {
   };
 
   if (user) {
-    navigate("/home");
+    navigate(from, { replace: true });
   }
+  // if (user1) {
+  //   navigate(from, { replace: true });
+  // }
 
   const handleCreateUser = (event) => {
     event.preventDefault();
@@ -82,6 +99,7 @@ const SignUp = () => {
             />
           </div>
           <br />
+          {errorElement}
           <p className=" text-red-600">{error}</p>
           <input
             type="submit"
@@ -100,7 +118,12 @@ const SignUp = () => {
 
           <div className="my-3 text-2xl font-semibold">Or</div>
 
-          <button className=" flex items-center justify-center w-full border-2 rounded mt-2 px-5 py-2 text-lg">
+          <button
+            onClick={() => {
+              signInWithGoogle();
+            }}
+            className=" flex items-center justify-center w-full border-2 rounded mt-2 px-5 py-2 text-lg"
+          >
             <img src="google.png" className="w-10 h-10" alt="" />
             Continue with Google
           </button>

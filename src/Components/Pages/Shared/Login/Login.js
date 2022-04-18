@@ -10,37 +10,31 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [user] = useAuthState(auth);
+  let errorElement;
 
-  const [signInWithGoogle, user1, loading, error] = useSignInWithGoogle(auth);
-
-  // const signinWithGoogle = () => {};
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
 
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
-  const [signInWithEmailAndPassword, user] =
+  const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   const handleEmailBlur = (e) => setEmail(e.target.value);
   const handlePasswordBlur = (e) => setPassword(e.target.value);
 
-  if (error) {
-    return (
-      <div>
-        <p className="text-red-500">Error: {error.message}</p>
-      </div>
-    );
+  if (error1) {
+    // console.log(error);
+
+    errorElement = <p className="text-red-500">Error: {error.message}</p>;
   }
 
-  if (loading) {
+  if (loading || loading1) {
     return <p>Loading...</p>;
   }
 
-  if (user) {
-    navigate(from, { replace: true });
-  }
-  if (user1) {
+  if (user || user1) {
     navigate(from, { replace: true });
   }
 
@@ -78,8 +72,9 @@ const Login = () => {
           />
         </div>
         <br />
-        {/* <p>{error?.message}</p>
-        {loading && <p>Loading .. .. </p>} */}
+        {errorElement}
+        <p>{error?.message}</p>
+        {loading && <p>Loading .. .. </p>}
         <input
           type="submit"
           className=" w-full bg-black rounded mt-6 mb-5 text-white  px-5 py-2 text-xl font-semibold"
@@ -89,6 +84,12 @@ const Login = () => {
           New to Emma Watson website?{" "}
           <Link className="text-decoration-none text-orange-400" to={"/signup"}>
             Create New Account
+          </Link>
+        </p>
+        <p>
+          Forget Password?{" "}
+          <Link className="text-decoration-none text-orange-400" to={"/signup"}>
+            Reset Password
           </Link>
         </p>
 

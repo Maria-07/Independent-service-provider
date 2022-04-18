@@ -6,7 +6,7 @@ import image1 from "../../../../images/HeaderImg/header-1.png";
 
 const Banner = () => {
   return (
-    <div className="head bg-black">
+    <div className="head mt-14 bg-black">
       <Container fluid>
         <Carousel fade>
           <Carousel.Item>
