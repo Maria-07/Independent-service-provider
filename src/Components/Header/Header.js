@@ -16,7 +16,7 @@ const Header = () => {
     <div>
       <Navbar fixed="top" className="bg-white text-slate-100" expand={false}>
         <Container>
-          <Navbar.Brand as={Link} to="home">
+          <Navbar.Brand as={Link} to="/">
             <span className=" font-semibold text-2xl">Emma Watson</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
@@ -29,7 +29,7 @@ const Header = () => {
               <Offcanvas.Title
                 as={Link}
                 className="text-decoration-none"
-                to="home"
+                to="/"
                 id="offcanvasNavbarLabel"
               >
                 <span className=" text-4xl font-semibold text-gray-800">
