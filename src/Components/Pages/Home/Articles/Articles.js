@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 const Articles = () => {
-  const { serviceId, name, description, img } = useParams();
+  const { name, description } = useParams();
   return (
     <div className="container my-32 p-5 border-2">
       {/* <h1>{serviceId}</h1> */}

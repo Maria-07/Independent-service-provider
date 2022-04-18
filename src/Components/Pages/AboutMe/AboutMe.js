@@ -18,6 +18,11 @@ const AboutMe = () => {
             <div className="mx-auto md:mt-28 mb-10 p-10">
               <h2 className="">Shanjida Rahman Maria</h2>
               <h3 className=" text-xl mb-3">FrontEnd Developer</h3>
+              <h6>
+                My intention is to construct myself a successful developer in
+                four/five months in order that i'm able to get a good activity
+                on this platform.
+              </h6>
               <p>
                 I am obsessed with making things and more to make things better.
                 I have an extraordinarily creative mind and I know how to use my

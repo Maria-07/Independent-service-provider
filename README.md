@@ -1,10 +1,26 @@
-# Getting Started with Create React App
+# Getting Started with Emma Watson
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LIVE LINK OF EMMA WATSON WEBSITE [Emma watson](https://emma-watson-16f05.web.app/).
 
-## Available Scripts
+## Used frameworks, libraries
 
-In the project directory, you can run:
+    * react-router-dom
+    * react-firebase-hooks
+    * tailwindcss
+    * tailwindcss/forms
+    * @fortawesome/react-fontawesome
+    * firebase
+    * react-toastify
+    * bootstrap
+
+## different features and functionality
+
+    * A home page
+    * Services that Emma done
+    * Private and protective article route connected with service
+    * About me
+    * Some basic questions related to Authentication system
+    * and signIn & Login system
 
 ### `npm start`
 
